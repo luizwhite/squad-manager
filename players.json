@@ -1,0 +1,1313 @@
+{
+  "get": "players",
+  "parameters": { "league": "39", "season": "2020" },
+  "errors": [],
+  "results": 20,
+  "paging": { "current": 1, "total": 38 },
+  "response": [
+    {
+      "player": {
+        "id": 114,
+        "name": "Adrien Silva",
+        "firstname": "Adrien Sebastian",
+        "lastname": "Perruchet Silva",
+        "age": 32,
+        "birth": {
+          "date": "1989-03-15",
+          "place": "Angoul\u00eame",
+          "country": "France"
+        },
+        "nationality": "Portugal",
+        "height": "175 cm",
+        "weight": "69 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/114.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 46,
+            "name": "Leicester",
+            "logo": "https://media.api-sports.io/football/teams/46.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 158,
+        "name": "P. Gazzaniga",
+        "firstname": "Paulo Dino",
+        "lastname": "Gazzaniga",
+        "age": 29,
+        "birth": {
+          "date": "1992-01-02",
+          "place": "Murphy",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "196 cm",
+        "weight": "90 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/158.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 47,
+            "name": "Tottenham",
+            "logo": "https://media.api-sports.io/football/teams/47.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 166,
+        "name": "J. Foyth",
+        "firstname": "Juan Marcos",
+        "lastname": "Foyth",
+        "age": 23,
+        "birth": {
+          "date": "1998-01-12",
+          "place": "La Plata",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "179 cm",
+        "weight": "69 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/166.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 47,
+            "name": "Tottenham",
+            "logo": "https://media.api-sports.io/football/teams/47.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 518,
+        "name": "M. Shabani",
+        "firstname": "Meritan",
+        "lastname": "Shabani",
+        "age": 22,
+        "birth": {
+          "date": "1999-03-15",
+          "place": "M\u00fcnchen",
+          "country": "Germany"
+        },
+        "nationality": "Germany",
+        "height": "185 cm",
+        "weight": "78 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/518.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 39,
+            "name": "Wolves",
+            "logo": "https://media.api-sports.io/football/teams/39.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 3 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 886,
+        "name": "Diogo Dalot",
+        "firstname": "Jos\u00e9 Diogo",
+        "lastname": "Dalot Teixeira",
+        "age": 22,
+        "birth": {
+          "date": "1999-03-18",
+          "place": "Braga",
+          "country": "Portugal"
+        },
+        "nationality": "Portugal",
+        "height": "183 cm",
+        "weight": "76 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/886.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 33,
+            "name": "Manchester United",
+            "logo": "https://media.api-sports.io/football/teams/33.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 892,
+        "name": "C. Smalling",
+        "firstname": "Chris",
+        "lastname": "Smalling",
+        "age": 32,
+        "birth": {
+          "date": "1989-11-22",
+          "place": "Greenwich",
+          "country": "England"
+        },
+        "nationality": "England",
+        "height": "194 cm",
+        "weight": "81 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/892.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 33,
+            "name": "Manchester United",
+            "logo": "https://media.api-sports.io/football/teams/33.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 899,
+        "name": "Andreas Pereira",
+        "firstname": "Andreas",
+        "lastname": "Hoelgebaum Pereira",
+        "age": 25,
+        "birth": {
+          "date": "1996-01-01",
+          "place": "Duffel",
+          "country": "Belgium"
+        },
+        "nationality": "Brazil",
+        "height": "178 cm",
+        "weight": "71 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/899.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 33,
+            "name": "Manchester United",
+            "logo": "https://media.api-sports.io/football/teams/33.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 1107,
+        "name": "F. Benkovi\u0107",
+        "firstname": "Filip",
+        "lastname": "Benkovi\u0107",
+        "age": 24,
+        "birth": {
+          "date": "1997-07-13",
+          "place": "Zagreb",
+          "country": "Croatia"
+        },
+        "nationality": "Croatia",
+        "height": "194 cm",
+        "weight": "80 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1107.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 46,
+            "name": "Leicester",
+            "logo": "https://media.api-sports.io/football/teams/46.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 1462,
+        "name": "L. Torreira",
+        "firstname": "Lucas",
+        "lastname": "Torreira Di Pascua",
+        "age": 25,
+        "birth": {
+          "date": "1996-02-11",
+          "place": "Fray Bentos",
+          "country": "Uruguay"
+        },
+        "nationality": "Uruguay",
+        "height": "168 cm",
+        "weight": "64 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1462.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 42,
+            "name": "Arsenal",
+            "logo": "https://media.api-sports.io/football/teams/42.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 1649,
+        "name": "P. Cutrone",
+        "firstname": "Patrick",
+        "lastname": "Cutrone",
+        "age": 23,
+        "birth": { "date": "1998-01-03", "place": "Como", "country": "Italy" },
+        "nationality": "Italy",
+        "height": "183 cm",
+        "weight": "75 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1649.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 39,
+            "name": "Wolves",
+            "logo": "https://media.api-sports.io/football/teams/39.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 0,
+            "minutes": 23,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.500000",
+            "captain": false
+          },
+          "substitutes": { "in": 2, "out": 0, "bench": 3 },
+          "shots": { "total": 1, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": 2, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": 3, "won": 1 },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": 1, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 8924,
+        "name": "M. Verrips",
+        "firstname": "Michael",
+        "lastname": "Verrips",
+        "age": 25,
+        "birth": {
+          "date": "1996-12-03",
+          "place": "Velp",
+          "country": "Netherlands"
+        },
+        "nationality": "Netherlands",
+        "height": "195 cm",
+        "weight": "85 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/8924.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 62,
+            "name": "Sheffield Utd",
+            "logo": "https://media.api-sports.io/football/teams/62.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 13 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 18895,
+        "name": "F. Lejeune",
+        "firstname": "Florian",
+        "lastname": "Lejeune",
+        "age": 30,
+        "birth": {
+          "date": "1991-05-20",
+          "place": "Paris",
+          "country": "France"
+        },
+        "nationality": "France",
+        "height": "189 cm",
+        "weight": "89 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/18895.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 34,
+            "name": "Newcastle",
+            "logo": "https://media.api-sports.io/football/teams/34.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 18905,
+        "name": "Y. Muto",
+        "firstname": "Yoshinori",
+        "lastname": "Muto",
+        "age": 29,
+        "birth": { "date": "1992-07-15", "place": "Tokyo", "country": "Japan" },
+        "nationality": "Japan",
+        "height": "179 cm",
+        "weight": "72 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/18905.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 34,
+            "name": "Newcastle",
+            "logo": "https://media.api-sports.io/football/teams/34.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 19153,
+        "name": "G. Barry",
+        "firstname": "Gareth",
+        "lastname": "Barry",
+        "age": 39,
+        "birth": {
+          "date": "1981-02-23",
+          "place": "Hastings",
+          "country": "England"
+        },
+        "nationality": "England",
+        "height": "183 cm",
+        "weight": "78 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/19153.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 60,
+            "name": "West Brom",
+            "logo": "https://media.api-sports.io/football/teams/60.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": null, "out": null, "bench": null },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": null, "yellowred": null, "red": null },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 19209,
+        "name": "F. Tomori",
+        "firstname": "Fikayo",
+        "lastname": "Tomori",
+        "age": 24,
+        "birth": {
+          "date": "1997-12-19",
+          "place": "Calgary",
+          "country": "Canada"
+        },
+        "nationality": "England",
+        "height": "185 cm",
+        "weight": "75 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/19209.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 49,
+            "name": "Chelsea",
+            "logo": "https://media.api-sports.io/football/teams/49.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 44,
+            "number": null,
+            "position": "Defender",
+            "rating": "7.000000",
+            "captain": false
+          },
+          "substitutes": { "in": 1, "out": 0, "bench": 5 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": 29, "key": null, "accuracy": 28 },
+          "tackles": { "total": 2, "blocks": 1, "interceptions": 2 },
+          "duels": { "total": 3, "won": 2 },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": 1 },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 19533,
+        "name": "Jota Peleteiro",
+        "firstname": "Jos\u00e9 Ignacio",
+        "lastname": "Peleteiro Ramallo",
+        "age": 30,
+        "birth": { "date": "1991-06-16", "place": "Vigo", "country": "Spain" },
+        "nationality": "Spain",
+        "height": "180 cm",
+        "weight": "70 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/19533.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 66,
+            "name": "Aston Villa",
+            "logo": "https://media.api-sports.io/football/teams/66.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 19827,
+        "name": "J. Cullen",
+        "firstname": "Joshua Jon",
+        "lastname": "Cullen",
+        "age": 25,
+        "birth": {
+          "date": "1996-04-07",
+          "place": "Westcliff-on-Sea",
+          "country": "England"
+        },
+        "nationality": "Republic of Ireland",
+        "height": "175 cm",
+        "weight": "70 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/19827.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 48,
+            "name": "West Ham",
+            "logo": "https://media.api-sports.io/football/teams/48.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 47324,
+        "name": "Sandro Ram\u00edrez",
+        "firstname": "Sandro",
+        "lastname": "Ram\u00edrez Castillo",
+        "age": 26,
+        "birth": {
+          "date": "1995-07-09",
+          "place": "Las Palmas",
+          "country": "Spain"
+        },
+        "nationality": "Spain",
+        "height": "175 cm",
+        "weight": "71 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/47324.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 45,
+            "name": "Everton",
+            "logo": "https://media.api-sports.io/football/teams/45.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 70078,
+        "name": "F. Pellistri",
+        "firstname": "Facundo",
+        "lastname": "Pellistri Rebollo",
+        "age": 20,
+        "birth": {
+          "date": "2001-12-20",
+          "place": "Montevideo",
+          "country": "Uruguay"
+        },
+        "nationality": "Uruguay",
+        "height": "174 cm",
+        "weight": "65 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/70078.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 33,
+            "name": "Manchester United",
+            "logo": "https://media.api-sports.io/football/teams/33.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 0 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 138936,
+        "name": "K. Hayden",
+        "firstname": "Kaine",
+        "lastname": "Kesler Hayden",
+        "age": 18,
+        "birth": { "date": "2003-05-25", "place": null, "country": "England" },
+        "nationality": "England",
+        "height": null,
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/138936.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 66,
+            "name": "Aston Villa",
+            "logo": "https://media.api-sports.io/football/teams/66.png"
+          },
+          "league": {
+            "id": 39,
+            "name": "Premier League",
+            "country": "England",
+            "logo": "https://media.api-sports.io/football/leagues/39.png",
+            "flag": "https://media.api-sports.io/flags/gb.svg",
+            "season": 2020
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": { "in": 0, "out": 0, "bench": 2 },
+          "shots": { "total": null, "on": null },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": { "total": null, "key": null, "accuracy": null },
+          "tackles": { "total": null, "blocks": null, "interceptions": null },
+          "duels": { "total": null, "won": null },
+          "dribbles": { "attempts": null, "success": null, "past": null },
+          "fouls": { "drawn": null, "committed": null },
+          "cards": { "yellow": 0, "yellowred": 0, "red": 0 },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}
