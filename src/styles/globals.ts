@@ -17,6 +17,7 @@ export default styled.createGlobalStyle`
     --purple-500: #552c8a;
     --gray-000: #eeeeee;
     --gray-100: #e9e9e9;
+    --gray-150: #dadada;
     --gray-400: #8d8d8d;
     --gray-800: #333333;
     --gray-850: #2b2b2b;
@@ -28,7 +29,9 @@ export default styled.createGlobalStyle`
     --text: var(--gray-800);
     --text-rgb: var(--gray-800-rgb);
     --title: var(--purple-500);
+    --subtitle: var(--gray-400);
     --border: var(--gray-000);
+    --border-input: var(--gray-150);
     --border-error: var(--red-450);
     --emphasis: var(--red-200);
 

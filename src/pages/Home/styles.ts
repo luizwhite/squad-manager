@@ -85,6 +85,11 @@ export const TeamsListHeader = styled.div`
     > div {
       white-space: nowrap;
       width: 100%;
+
+      a {
+        display: block;
+        width: 100%;
+      }
     }
   }
 `;
