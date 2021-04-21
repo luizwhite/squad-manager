@@ -69,3 +69,19 @@ const ManagerInfoBlock = styled.section`
 export const TeamInfo = styled(ManagerInfoBlock)``;
 
 export const TeamConfiguration = styled(ManagerInfoBlock)``;
+
+export const SaveButton = styled.button`
+  width: 100%;
+  padding: 0.875rem;
+  margin-top: 1.375rem;
+
+  border-radius: 0.25rem;
+  background-image: linear-gradient(
+    to bottom,
+    var(--violet) 0%,
+    var(--purple-400) 100%
+  );
+
+  color: white;
+  font-weight: bold;
+`;

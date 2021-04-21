@@ -14,6 +14,7 @@ export default styled.createGlobalStyle`
     --pink-300-rgb: 177, 61, 124;
     --violet: #8b206f;
     --purple-400: #642e87;
+    --purple-400-rgb: 100, 46, 135;
     --purple-500: #552c8a;
     --gray-000: #eeeeee;
     --gray-100: #e9e9e9;

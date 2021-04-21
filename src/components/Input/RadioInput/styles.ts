@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const RadioMainLabel = styled.p`
   display: block;
+  font-weight: bold;
   margin-bottom: 0.75rem;
 `;
 

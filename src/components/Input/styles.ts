@@ -13,6 +13,7 @@ interface InputContainerProps {
 
 export const Label = styled.label<LabelProps>`
   display: block;
+  font-weight: bold;
   margin-bottom: 0.75rem;
 
   ${({ $isFocused }) =>

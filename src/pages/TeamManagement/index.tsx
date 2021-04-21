@@ -1,17 +1,19 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { Form } from '@unform/web';
-import { FormHandles, useField } from '@unform/core';
+import { FormHandles } from '@unform/core';
 
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Radio } from '../../components/Input/RadioInput';
+import { FootballField } from '../../components/FootballField';
 
 import {
   Container,
   ManagerHeader,
   TeamInfo,
   TeamConfiguration,
+  SaveButton,
 } from './styles';
 
 interface FormData {
@@ -20,6 +22,7 @@ interface FormData {
   description: string;
   'team-type': 'Real' | 'Fantasy';
   tags: string[];
+  formation: string;
 }
 
 const TeamManagement: React.FC = () => {
@@ -31,6 +34,7 @@ const TeamManagement: React.FC = () => {
   ];
 
   const handleSubmit = useCallback((data: FormData) => {
+    // eslint-disable-next-line no-console
     console.log(data);
   }, []);
 
@@ -77,15 +81,17 @@ const TeamManagement: React.FC = () => {
             <h2>Configure Squad</h2>
             <div>
               <div>
+                <FootballField $form={formRef} title="formation" />
+                <SaveButton type="submit">Save</SaveButton>
+              </div>
+              <div>
                 <Input
                   label="Search players"
                   name="player-search"
                   placeholder="Ronaldo"
                   notFormField
                 />
-                <button type="submit">Save</button>
               </div>
-              <div />
             </div>
           </TeamConfiguration>
         </Form>
