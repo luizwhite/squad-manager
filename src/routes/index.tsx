@@ -7,6 +7,7 @@ const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Home} />
     <Route path="/manager" exact component={TeamManagement} />
+    <Route path="/manager/:id" component={TeamManagement} />
   </Switch>
 );
 

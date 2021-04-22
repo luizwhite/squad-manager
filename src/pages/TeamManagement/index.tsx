@@ -1,4 +1,5 @@
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
@@ -15,35 +16,71 @@ import {
   TeamConfiguration,
   SaveButton,
 } from './styles';
+import { useTeams, Team } from '../../hooks/teams';
 
 interface FormData {
   'team-name': string;
   'team-website': string;
   description: string;
   'team-type': 'Real' | 'Fantasy';
-  tags: string[];
+  // tags: string[];
   formation: string;
 }
 
 const TeamManagement: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { addTeam, getTeam } = useTeams();
+  const history = useHistory();
+
+  const { id } = useParams<{ id?: string }>();
 
   const radioOptions = [
     { id: 'real', value: 'real', label: 'Real' },
     { id: 'fantasy', value: 'fantasy', label: 'Fantasy' },
   ];
 
-  const handleSubmit = useCallback((data: FormData) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-  }, []);
+  const handleSubmit = useCallback(
+    (data: FormData) => {
+      console.log(data);
+      const { description, formation } = data;
+
+      const team: Omit<Team, 'id'> = {
+        name: data['team-name'],
+        description,
+        type: data['team-type'],
+        website: data['team-website'],
+        formation,
+      };
+
+      addTeam(team);
+      history.push('/');
+    },
+    [addTeam, history],
+  );
+
+  useEffect(() => {
+    const team = getTeam(Number(id));
+
+    if (!team) history.push('/manager');
+    else if (id && formRef.current) {
+      const formData = {
+        'team-name': team.name,
+        description: team.description,
+        'team-website': team.website,
+        'team-type': team.type,
+        formation: team.formation,
+      };
+
+      formRef.current.setData(formData);
+    }
+  }, [formRef, getTeam, history, id]);
 
   return (
     <>
       <Header />
       <Container>
         <ManagerHeader>
-          <h1>Create your team</h1>
+          <h1>{!id ? 'Create your team' : 'Update your team information'}</h1>
         </ManagerHeader>
         <Form ref={formRef} onSubmit={handleSubmit}>
           <TeamInfo>
@@ -54,11 +91,17 @@ const TeamManagement: React.FC = () => {
                   label="Team name"
                   name="team-name"
                   placeholder="Insert team name"
-                  pattern="^\s?[a-zA-Z\u00C0-\u017F]+(\s[a-zA-Z\u00C0-\u017F]+)*\s?$"
+                  pattern="^\s?([a-zA-Z\u00C0-\u017F]{2,})+(\s[a-zA-Z\u00C0-\u017F]{2,})*\s?$"
+                  maxLength={25}
                   title="Type in the team name"
                   required
                 />
-                <Input text-area label="Description" name="description" />
+                <Input
+                  text-area
+                  label="Description"
+                  name="description"
+                  maxLength={80}
+                />
               </div>
               <div>
                 <Input
@@ -73,6 +116,7 @@ const TeamManagement: React.FC = () => {
                   name="team-type"
                   label="Team type"
                   options={radioOptions}
+                  required
                 />
               </div>
             </div>
@@ -81,7 +125,7 @@ const TeamManagement: React.FC = () => {
             <h2>Configure Squad</h2>
             <div>
               <div>
-                <FootballField $form={formRef} title="formation" />
+                <FootballField title="formation" />
                 <SaveButton type="submit">Save</SaveButton>
               </div>
               <div>

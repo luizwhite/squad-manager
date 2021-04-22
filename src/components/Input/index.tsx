@@ -36,11 +36,26 @@ export const Input: React.FC<InputProps> = ({
 
     if (pattern) {
       const myRegex = new RegExp(pattern);
-      setIsInvalid(
-        !!inputRef.current &&
-          !(inputRef.current.value === null || inputRef.current.value === '') &&
-          !myRegex.test(inputRef.current.value),
-      );
+      setIsInvalid((state) => {
+        if (
+          !!inputRef.current &&
+          !(inputRef.current.value === null || inputRef.current.value === '')
+        ) {
+          if (!myRegex.test(inputRef.current.value)) {
+            inputRef.current.setCustomValidity(inputRef.current.title);
+            inputRef.current.focus();
+            inputRef.current.reportValidity();
+
+            return true;
+          }
+
+          inputRef.current.setCustomValidity('');
+          inputRef.current.reportValidity();
+
+          return false;
+        }
+        return state;
+      });
     }
   }, [inputRef, pattern]);
 

@@ -46,20 +46,25 @@ export const Container = styled.table<{ selectedRow: number | null }>`
           width: 10.625rem;
         }
 
-        &:last-child {
+        > div {
           display: flex;
           align-items: center;
-        }
-
-        > div {
-          display: inline;
-          margin-left: auto;
+          justify-content: space-between;
+          height: 3rem;
 
           > div {
-            display: inline-block;
+            display: flex;
 
-            & + div {
-              margin-left: 0.625rem;
+            &:first-child {
+              overflow: hidden;
+            }
+
+            > div {
+              display: inline-block;
+
+              & + div {
+                margin-left: 0.625rem;
+              }
             }
           }
 

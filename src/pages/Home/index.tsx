@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { MdDelete, MdShare, MdModeEdit } from 'react-icons/md';
 import { FaSort } from 'react-icons/fa';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { TeamsListTable } from '../../components/TeamsListTable';
+import Tooltip from '../../components/Tooltip';
+import { useTeams, Team } from '../../hooks/teams';
 
 import {
   Container,
@@ -16,50 +18,60 @@ import {
   TopRankingContent,
   PickedRank,
 } from './styles';
-import Tooltip from '../../components/Tooltip';
-
-interface Team {
-  id: number;
-  name: string;
-  description: string;
-}
 
 const Home: React.FC = () => {
-  const [teams, setTeams] = useState([
-    {
-      id: 1,
-      name: 'Barcelona',
-      description: 'Barcelona Squad',
-    },
-    {
-      id: 2,
-      name: 'Real Madrid',
-      description: 'Real Madrid Squad',
-    },
-    {
-      id: 3,
-      name: 'Milan',
-      description: 'Milan Squad',
-    },
-    {
-      id: 4,
-      name: 'Liverpool',
-      description: 'Liverpool Squad',
-    },
-    {
-      id: 5,
-      name: 'Bayern Munich',
-      description: 'Bayern Munich Squad',
-    },
-    {
-      id: 6,
-      name: 'Lazio',
-      description: 'Lazio Squad',
-    },
-  ]);
+  // const [teams, setTeams] = useState([
+  //   {
+  //     id: 1,
+  //     name: 'Barcelona',
+  //     description: 'Barcelona Squad',
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Real Madrid',
+  //     description: 'Real Madrid Squad',
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Milan',
+  //     description: 'Milan Squad',
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Liverpool',
+  //     description: 'Liverpool Squad',
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Bayern Munich',
+  //     description: 'Bayern Munich Squad',
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Lazio',
+  //     description: 'Lazio Squad',
+  //   },
+  // ]);
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   const [sortState, setSortState] = useState<string | null>(null);
+  const { teams, deleteTeam } = useTeams();
+  const history = useHistory();
+
+  const handleDeleteTeam = useCallback(
+    (id: number) => {
+      deleteTeam(id);
+      setSelectedRow(null);
+    },
+    [deleteTeam],
+  );
+
+  const handleEditTeam = useCallback(
+    (id: number) => {
+      history.push(`/manager/${id}`);
+    },
+    [history],
+  );
 
   const handleSort = useCallback(
     (sortBy: string) => {
@@ -97,7 +109,7 @@ const Home: React.FC = () => {
   );
 
   useEffect(() => {
-    if (selectedRow) setSelectedTeam(teams[selectedRow - 1]);
+    if (selectedRow && teams) setSelectedTeam(teams[selectedRow - 1]);
   }, [selectedRow, teams]);
 
   useEffect(() => {
@@ -161,34 +173,50 @@ const Home: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {teams.length &&
+              {teams.length ? (
                 teams.map((team, i) => (
                   <tr key={team.id}>
-                    <td>{team.name}</td>
                     <td>
-                      {team.description}
-                      {selectedRow === i + 1 && (
-                        <div>
-                          <Tooltip title="Delete">
-                            <button type="button">
-                              <MdDelete />
-                            </button>
-                          </Tooltip>
-                          <Tooltip title="Share">
-                            <button type="button">
-                              <MdShare />
-                            </button>
-                          </Tooltip>
-                          <Tooltip title="Edit">
-                            <button type="button">
-                              <MdModeEdit />
-                            </button>
-                          </Tooltip>
-                        </div>
-                      )}
+                      <div>{team.name}</div>
+                    </td>
+                    <td>
+                      <div>
+                        <div>{team.description}</div>
+                        {selectedRow === i + 1 && (
+                          <div>
+                            <Tooltip title="Delete">
+                              <button
+                                onClick={() => handleDeleteTeam(team.id)}
+                                type="button"
+                              >
+                                <MdDelete />
+                              </button>
+                            </Tooltip>
+                            <Tooltip title="Share">
+                              <button type="button">
+                                <MdShare />
+                              </button>
+                            </Tooltip>
+                            <Tooltip title="Edit">
+                              <button
+                                onClick={() => handleEditTeam(team.id)}
+                                type="button"
+                              >
+                                <MdModeEdit />
+                              </button>
+                            </Tooltip>
+                          </div>
+                        )}
+                      </div>
                     </td>
                   </tr>
-                ))}
+                ))
+              ) : (
+                <tr>
+                  <td />
+                  <td />
+                </tr>
+              )}
             </tbody>
           </TeamsListTable>
         </TeamsList>

@@ -53,21 +53,27 @@ export const InputContainer = styled.div<InputContainerProps>`
       box-shadow: inset 0 0 0 1px var(--purple-400);
     `}
 
-  ${({ isErrored }) =>
-    isErrored &&
-    css`
-      border-color: var(--border-error);
-      box-shadow: inset 0 0 0 1px var(--border-error);
+  ${({ isErrored, isFocused }) =>
+    isErrored
+      ? css`
+          border-color: var(--border-error);
+          box-shadow: inset 0 0 0 1px var(--border-error);
 
-      input,
-      textarea {
-        color: var(--emphasis);
-      }
-    `}
+          ${!isFocused &&
+          css`
+            input,
+            textarea {
+              color: var(--emphasis);
+            }
+          `}
+        `
+      : css`
+          &:hover {
+            border-color: var(--purple-400);
+          }
+        `}
 
-  &:hover {
-    border-color: var(--purple-400);
-  }
+  
 
   input,
   textarea {

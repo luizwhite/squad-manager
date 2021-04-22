@@ -1,5 +1,5 @@
 import { FormHandles } from '@unform/core';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { OptionTypeBase } from 'react-select';
 
 import { Player } from '../Player';
@@ -19,7 +19,6 @@ import {
 interface FootbalFieldProps {
   className?: string;
   title: string;
-  $form: React.RefObject<FormHandles>;
 }
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -40,24 +39,32 @@ export const FootballField: React.FC<FootbalFieldProps> = ({
       label: '2 - 3 - 5',
     },
     {
-      value: '4 - 4 - 2',
-      label: '4 - 4 - 2',
-    },
-    {
-      value: '4 - 5 - 1',
-      label: '4 - 5 - 1',
-    },
-    {
-      value: '4 - 3 - 3',
-      label: '4 - 3 - 3',
+      value: '3 - 4 - 3',
+      label: '3 - 4 - 3',
     },
     {
       value: '3 - 5 - 2',
       label: '3 - 5 - 2',
     },
     {
-      value: '3 - 4 - 3',
-      label: '3 - 4 - 3',
+      value: '4 - 5 - 1',
+      label: '4 - 5 - 1',
+    },
+    {
+      value: '4 - 4 - 2',
+      label: '4 - 4 - 2',
+    },
+    {
+      value: '4 - 3 - 3',
+      label: '4 - 3 - 3',
+    },
+    {
+      value: '4 - 3 - 2',
+      label: '4 - 3 - 2',
+    },
+    {
+      value: '5 - 4 - 1',
+      label: '5 - 4 - 1',
     },
   ];
 
@@ -88,6 +95,7 @@ export const FootballField: React.FC<FootbalFieldProps> = ({
           options={selectOptions}
           styles={selectInputStyles}
           onChange={handleChange}
+          required
         />
       </Header>
       <FieldContainer>

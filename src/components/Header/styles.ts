@@ -20,7 +20,12 @@ export const Container = styled.header`
 
   filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.6));
 
-  > div {
+  a {
+    height: 100%;
+  }
+
+  > div,
+  > a > div {
     height: 100%;
     display: flex;
     align-items: center;
@@ -29,30 +34,30 @@ export const Container = styled.header`
     font-weight: bold;
     font-size: 1.125rem;
 
-    & + div {
-      font-size: 1rem;
-      font-weight: normal;
-
-      > div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        width: calc(var(--header-height) - calc(2 * var(--padding-y)));
-        margin-left: 0.3125rem;
-
-        border-radius: 50%;
-        background-color: var(--white);
-        color: var(--text);
-        font-weight: 900;
-        font-size: 1.125rem;
-      }
-    }
-
     svg {
       height: 100%;
       width: auto;
       margin-right: 1rem;
+    }
+  }
+
+  > a + div {
+    font-size: 1rem;
+    font-weight: normal;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: calc(var(--header-height) - calc(2 * var(--padding-y)));
+      margin-left: 0.3125rem;
+
+      border-radius: 50%;
+      background-color: var(--white);
+      color: var(--text);
+      font-weight: 900;
+      font-size: 1.125rem;
     }
   }
 
