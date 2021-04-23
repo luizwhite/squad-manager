@@ -1,10 +1,8 @@
-## Squad Management Tool
-
-
 <p align="center">
-    <img alt="iliketomoveit" title="iliketomoveit" src=".github/iliketomoveit-example.png" />
+    <img alt="squadmanager" title="squadmanager" src=".github/squadmanager_mockup_all.png" />
 </p>
 
+## Squad Management Tool
 ## 📖 About
 Squad Manager is a fantasy football team management app with a simple dashboard displaying:
 - Your created Teams
