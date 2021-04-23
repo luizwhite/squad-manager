@@ -64,7 +64,9 @@ const Home: React.FC = () => {
 
   const handleCompleteTeam = useCallback(
     async (id: number) => {
-      const data = await getTeam(id);
+      const data = await getTeam(id).catch((err) => {
+        console.error(`An error has occured: ${err as string}`);
+      });
 
       history.push({
         pathname: '/manager',

@@ -167,7 +167,7 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
 
       localStorage.setItem('@SquadTool:team', JSON.stringify(team.team));
       setupTeam(team.team);
-    } else if (stateData) {
+    } else if (stateData && stateData?.team) {
       const formData = {
         'team-name': stateData?.team.team.name || '',
         description: stateData?.team.venue.name || '',

@@ -1,8 +1,19 @@
+## Table of Contents
+**1.** [About](#-about)
+
+**2.** [Features](#-features)
+
+**3.** [Minor Features](#-minor-features---to-add-next)
+
+**4.** [Deploy](#-deploy)
+
+**5.** [**Local Installation**](#-local-installation)
+
 <p align="center">
     <img alt="squadmanager" title="squadmanager" src=".github/squadmanager_mockup_all.png" />
 </p>
 
-## Squad Management Tool
+# Squad Management Tool
 ## 📖 About
 Squad Manager is a fantasy football team management app with a simple dashboard displaying:
 - Your created Teams
@@ -63,12 +74,19 @@ The API used to populate the app is [Api-Football](https://www.api-football.com/
 ## 📃 Repository
 GitHub: [`https://github.com/luizwhite/squad-manager`](https://github.com/luizwhite/squad-manager)
 
-## 🎉 Deploy - 🚧 under development 🚧
+## 🎉 Deploy
+🚧 under development 🚧
 
 ## 💻 Local Installation
 ```bash
 # Open terminal and clone this repository
 $ git clone https://github.com/luizwhite/squad-manager.git
+
+# Create a .env.local file and add the requested environment variables
+# based on the .env.example file in the project root
+
+# Api-Football need your own key
+# Check https://www.api-football.com/documentation-v3#section/Authentication/API-SPORTS-Account
 
 # Install dependencies
 $ yarn

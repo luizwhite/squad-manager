@@ -14,7 +14,7 @@ export const getTeam = async (teamId: number, league = 71): Promise<any> => {
     {
       method: 'GET',
       headers: {
-        'x-rapidapi-key': '8f3d9ad1a73cb976c052e6390d2f0de2',
+        'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY || '',
         'x-rapidapi-host': 'v3.football.api-sports.io',
       },
       redirect: 'follow' as RequestRedirect,
@@ -33,7 +33,7 @@ export const getTeam = async (teamId: number, league = 71): Promise<any> => {
     {
       method: 'GET',
       headers: {
-        'x-rapidapi-key': '8f3d9ad1a73cb976c052e6390d2f0de2',
+        'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY || '',
         'x-rapidapi-host': 'v3.football.api-sports.io',
       },
       redirect: 'follow' as RequestRedirect,
@@ -59,7 +59,7 @@ export const getPlayers = async (
   league = 71,
 ): Promise<Data> => {
   const myHeaders = new Headers();
-  myHeaders.append('x-rapidapi-key', '8f3d9ad1a73cb976c052e6390d2f0de2');
+  myHeaders.append('x-rapidapi-key', process.env.REACT_APP_RAPIDAPI_KEY || '');
   myHeaders.append('x-rapidapi-host', 'v3.football.api-sports.io');
   const requestOptions = {
     method: 'GET',
@@ -93,7 +93,7 @@ export const getAllPlayers = async (
     {
       method: 'GET',
       headers: {
-        'x-rapidapi-key': '8f3d9ad1a73cb976c052e6390d2f0de2',
+        'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY || '',
         'x-rapidapi-host': 'v3.football.api-sports.io',
       },
       redirect: 'follow' as RequestRedirect,
