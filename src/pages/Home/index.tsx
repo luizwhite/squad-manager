@@ -62,9 +62,17 @@ const Home: React.FC = () => {
     [history],
   );
 
-  const handleCompleteTeam = useCallback(async (id: number) => {
-    console.log(await getTeam(id));
-  }, []);
+  const handleCompleteTeam = useCallback(
+    async (id: number) => {
+      const data = await getTeam(id);
+
+      history.push({
+        pathname: '/manager',
+        state: data,
+      });
+    },
+    [history],
+  );
 
   const handleSort = useCallback(
     (sortBy: string) => {
@@ -182,8 +190,14 @@ const Home: React.FC = () => {
               <h1>Highest avg age</h1>
               <div>
                 {Object.keys(topList).length ? (
-                  topList.highest.map(({ team, avg }) => (
-                    <div key={team}>
+                  topList.highest.map(({ id: teamId, team, avg }, i) => (
+                    <div
+                      key={team}
+                      onClick={() => handleCompleteTeam(teamId)}
+                      role="button"
+                      onKeyDown={() => {}}
+                      tabIndex={i}
+                    >
                       {team}
                       <span>{avg}</span>
                     </div>

@@ -31,12 +31,7 @@ const TeamsProvider: React.FC = ({ children }) => {
         id,
       });
 
-      console.log({
-        team: {
-          ...team,
-          id,
-        },
-      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       id += 1;
     },
     [id, teams],

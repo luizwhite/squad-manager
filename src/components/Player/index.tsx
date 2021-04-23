@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 
-import { useTeamFormation, TeamFormation } from '../../hooks/teamFormation';
+import { useTeamFormation } from '../../hooks/teamFormation';
 
 import { Container, DummyImg } from './styles';
 

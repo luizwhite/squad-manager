@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+## Squad Management Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+<p align="center">
+    <img alt="iliketomoveit" title="iliketomoveit" src=".github/iliketomoveit-example.png" />
+</p>
 
-In the project directory, you can run:
+## 📖 About
+Squad Manager is a fantasy football team management app with a simple dashboard displaying:
+- Your created Teams
+- Real team top ranking (in this case, with an average team age rank)
+- Most/Less picked player (🚧 info displayed under development 🚧)
 
-### `yarn start`
+In the team manager you can create/edit your team customizing:
+- Team **name**
+- Team **description** 
+- Team **website**
+- Team **type** (real or fantasy)
+- Team **tags** (🚧 under development 🚧)
+- Team **formation**
+- Team **players** → with **drag-n-drop**!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The API used to populate the app is [Api-Football](https://www.api-football.com/)
+(*the league used in this app example is the Brazil A Serie championship*)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🔨 Features
+→ Team creation/edition
 
-### `yarn test`
+→ Team management
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+→ Team players management with **drag-n-drop** using [**react-dnd**](https://react-dnd.github.io/react-dnd/about)
 
-### `yarn build`
+→ Real player search using [Api-Football](https://www.api-football.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+→ Real player average age rank [Api-Football](https://www.api-football.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+→ Mobile Responsiveness - 🚧 under development 🚧
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+→ Share your team in social media - 🚧 under development 🚧
 
-### `yarn eject`
+→ Data persistence with MongoDB - 🚧 under development 🚧
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+→ OAuth session - 🚧 under development 🚧
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+→ Theme Toggler - light/dark - 🚧 under development 🚧
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📐 Minor Features - to add next
+→ Drag-n-drop support for mobile devices
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+→ Mobile Responsiveness
 
-## Learn More
+→ Most/Less picked player
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Techs & Tools
+→ [**ReactJS**](https://reactjs.org/)
+
+→ [**TypeScript**](https://www.typescriptlang.org/)
+
+→ [**Api-Football**](https://www.api-football.com/)
+
+→ [**react-dnd**](https://react-dnd.github.io/react-dnd/about)
+
+-----
+## 📃 Repository
+GitHub: [`https://github.com/luizwhite/squad-manager`](https://github.com/luizwhite/squad-manager)
+
+## 🎉 Deploy - 🚧 under development 🚧
+
+## 💻 Local Installation
+```bash
+# Open terminal and clone this repository
+$ git clone https://github.com/luizwhite/squad-manager.git
+
+# Install dependencies
+$ yarn
+
+# Start the application
+$ yarn start
+```
+

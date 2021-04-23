@@ -17,13 +17,14 @@ export const ItemTypes = {
 };
 
 export const DraggablePlayer: React.FC<DraggablePlayerProps> = ({ player }) => {
-  const [{ isDragging }, drag, preview] = useDrag(() => ({
+  const [{ isDragging /* didDrop */ }, drag, preview] = useDrag(() => ({
     type: ItemTypes.PLAYER,
     item: {
       player,
     },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
+      didDrop: !!monitor.didDrop(),
     }),
   }));
 

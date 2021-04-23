@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, RouteProps } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -59,12 +59,33 @@ interface Player {
   };
 }
 
-const TeamManagement: React.FC = () => {
+interface State {
+  location: {
+    state: {
+      team: {
+        team: {
+          name: string;
+        };
+        venue: {
+          name: string;
+        };
+      };
+      teamPlayers: {
+        player: Player['player'];
+      }[];
+    };
+  };
+}
+
+const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   const formRef = useRef<FormHandles>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [playersList, setPlayersList] = useState<Player[]>([]);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const [invalidSearch, setInvalidSearch] = useState(false);
+  const [stateData] = useState<State['location']['state'] | null>(
+    () => location.state || null,
+  );
   const { addTeam, getTeam } = useTeams();
   const { clearFormation, setupTeam } = useTeamFormation();
   const history = useHistory();
@@ -127,8 +148,13 @@ const TeamManagement: React.FC = () => {
   useEffect(() => {
     const team = getTeam(Number(id));
 
-    if (!team) history.push('/manager');
-    else if (id && formRef.current) {
+    if (!team && location.pathname !== '/manager') {
+      history.push('/manager');
+      return;
+    }
+    if (!formRef.current) return;
+
+    if (id && team) {
       const formData = {
         'team-name': team.name,
         description: team.description,
@@ -141,8 +167,75 @@ const TeamManagement: React.FC = () => {
 
       localStorage.setItem('@SquadTool:team', JSON.stringify(team.team));
       setupTeam(team.team);
+    } else if (stateData) {
+      const formData = {
+        'team-name': stateData?.team.team.name || '',
+        description: stateData?.team.venue.name || '',
+        'team-website': '',
+        'team-type': 'real',
+        formation: '3 - 4 - 3',
+      };
+
+      formRef.current.setData(formData);
+
+      const realTeam = stateData.teamPlayers.reduce(
+        (
+          acc: TeamFormation,
+          { player }: { player: Player['player'] },
+          i: number,
+        ) => ({
+          ...acc,
+          offense: {
+            ...acc.offense,
+            ...(i < 3
+              ? {
+                  [`${i + 1}`]: {
+                    id: player.id,
+                    name: player.firstname + player.lastname,
+                    nationality: player.nationality,
+                    age: player.age,
+                  },
+                }
+              : {}),
+          },
+          middle: {
+            ...acc.middle,
+            ...(i < 7 && i >= 3
+              ? {
+                  [`${i + 1 - 3}`]: {
+                    id: player.id,
+                    name: player.firstname + player.lastname,
+                    nationality: player.nationality,
+                    age: player.age,
+                  },
+                }
+              : {}),
+          },
+          defense: {
+            ...acc.defense,
+            ...(i < 10 && i >= 7
+              ? {
+                  [`${i + 1 - 7}`]: {
+                    id: player.id,
+                    name: player.firstname + player.lastname,
+                    nationality: player.nationality,
+                    age: player.age,
+                  },
+                }
+              : {}),
+          },
+        }),
+        {
+          offense: {},
+          middle: {},
+          defense: {},
+        },
+      );
+
+      localStorage.setItem('@SquadTool:team', JSON.stringify(realTeam));
+      setupTeam(realTeam);
     }
-  }, [formRef, getTeam, history, id, setupTeam]);
+  }, [formRef, getTeam, history, id, stateData, setupTeam, location.pathname]);
 
   useEffect(() => {
     const getData = async () => {
@@ -223,7 +316,11 @@ const TeamManagement: React.FC = () => {
                 {searchFilter && (
                   <ul>
                     {playersList.map(({ player }) => (
-                      <DraggablePlayer key={player.id} player={player} />
+                      <DraggablePlayer
+                        key={player.id}
+                        player={player}
+                        // onComplete={() => handleDropComplete(player.id)}
+                      />
                     ))}
                   </ul>
                 )}

@@ -48,8 +48,8 @@ export const getTeam = async (teamId: number, league = 71): Promise<any> => {
   const teamPlayers = await playersResponse.json();
 
   return {
-    team,
-    teamPlayers,
+    team: team.response[0],
+    teamPlayers: teamPlayers.response,
   };
 };
 

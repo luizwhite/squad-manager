@@ -25,6 +25,12 @@
   "rules": {
     "prettier/prettier": "error",
     "no-nested-ternary": "off",
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "warn",

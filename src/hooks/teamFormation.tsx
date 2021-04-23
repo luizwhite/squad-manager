@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
 
 interface Player {
   id: number;
@@ -23,7 +17,6 @@ export interface TeamFormation {
   offense: Position;
   middle: Position;
   defense: Position;
-  test?: number;
 }
 
 interface TeamFormationContextData {
@@ -63,16 +56,7 @@ const TeamFormationProvider: React.FC = ({ children }) => {
       };
 
       setTeamFormation(formation);
-
       localStorage.setItem('@SquadTool:team', JSON.stringify(formation));
-
-      // setTeamFormation({
-      //   ...teamFormation,
-      //   [area]: {
-      //     ...teamFormation[area],
-      //     [String(position)]: player,
-      //   },
-      // });
     },
     [teamFormation],
   );
@@ -82,13 +66,9 @@ const TeamFormationProvider: React.FC = ({ children }) => {
     setTeamFormation({} as TeamFormation);
   }, []);
 
-  useEffect(() => {
-    console.log(teamFormation);
-  }, [teamFormation]);
-
-  useEffect(() => {
-    console.log('mounted');
-  }, []);
+  // useEffect(() => {
+  //   console.log(teamFormation);
+  // }, [teamFormation]);
 
   return (
     <TeamFormationContext.Provider

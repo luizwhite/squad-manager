@@ -1,5 +1,4 @@
-import { FormHandles } from '@unform/core';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { OptionTypeBase } from 'react-select';
 import { useTeamFormation } from '../../hooks/teamFormation';
 
