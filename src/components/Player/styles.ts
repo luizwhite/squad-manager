@@ -61,6 +61,7 @@ export const Container = styled.div<ContainerProps>`
 export const Img = styled.img`
   height: 70%;
   width: auto;
+  z-index: 2;
 `;
 
 export const DummyImg = styled(Img).attrs({

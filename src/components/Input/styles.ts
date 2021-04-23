@@ -73,8 +73,6 @@ export const InputContainer = styled.div<InputContainerProps>`
           }
         `}
 
-  
-
   input,
   textarea {
     flex: 1;
@@ -84,6 +82,17 @@ export const InputContainer = styled.div<InputContainerProps>`
 
     &::placeholder {
       color: var(--gray-150);
+    }
+  }
+
+  button {
+    color: var(--purple-400);
+    margin-right: 1rem;
+    font-size: 0;
+    background-color: unset;
+
+    &:hover svg {
+      stroke-width: 1;
     }
   }
 `;

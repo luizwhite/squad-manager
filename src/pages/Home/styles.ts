@@ -151,6 +151,14 @@ export const TopRankingContent = styled.div`
         background-color: white;
         font-size: 0.875rem;
 
+        transition: box-shadow 0.2s;
+        cursor: pointer;
+        z-index: 2;
+
+        &:hover {
+          box-shadow: inset 0 0 0 2px var(--purple-400) !important;
+        }
+
         span {
           font-weight: bold;
         }
@@ -158,7 +166,7 @@ export const TopRankingContent = styled.div`
     }
   }
 
-  > div:first-child > div > div:first-child {
+  > div > div > div:first-child {
     box-shadow: inset 0 0 0 1px var(--emphasis);
   }
 `;

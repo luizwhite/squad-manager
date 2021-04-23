@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useState } from 'react';
+import { TeamFormation } from './teamFormation';
 
 export interface Team {
   id: number;
@@ -7,6 +8,7 @@ export interface Team {
   description: string;
   website: string;
   formation: string;
+  team: TeamFormation;
 }
 
 interface TeamsContextData {

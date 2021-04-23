@@ -1,6 +1,7 @@
 import { FormHandles } from '@unform/core';
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { OptionTypeBase } from 'react-select';
+import { useTeamFormation } from '../../hooks/teamFormation';
 
 import { Player } from '../Player';
 
@@ -27,10 +28,14 @@ export const FootballField: React.FC<FootbalFieldProps> = ({
   title,
 }) => {
   const [formationValue, setFormationValue] = useState<string | null>(null);
+  const { clearFormation } = useTeamFormation();
 
   const handleChange = useCallback(
-    (e: OptionTypeBase) => setFormationValue(e.value),
-    [],
+    (e: OptionTypeBase) => {
+      clearFormation();
+      setFormationValue(e.value);
+    },
+    [clearFormation],
   );
 
   const selectOptions = [
@@ -102,12 +107,14 @@ export const FootballField: React.FC<FootbalFieldProps> = ({
         <Field layout={selectedFormation}>
           <div />
           {selectedFormation &&
-            selectedFormation.map(({ uid, formation }) => (
+            selectedFormation.map(({ uid, formation }, areaIndex) => (
               <Area key={uid} {...(formation > 4 && { bigArea: true })}>
                 {[...Array(formation)].map((_, i) => (
                   <Player
                     // eslint-disable-next-line react/no-array-index-key
                     key={`p-${i}`}
+                    $area={areaIndex + 1}
+                    $position={i + 1}
                     $col={
                       formation > 4
                         ? i + 1 <= 2
@@ -139,7 +146,7 @@ export const FootballField: React.FC<FootbalFieldProps> = ({
             ))}
           {selectedFormation && (
             <Area>
-              <Player $col={2} />
+              <Player notDroppable $col={2} />
             </Area>
           )}
         </Field>

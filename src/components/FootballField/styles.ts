@@ -156,6 +156,7 @@ export const selectInputStyles: NamedProps['styles'] = {
   menu: (styles) => ({
     ...styles,
     marginTop: 4,
+    zIndex: 10,
   }),
 
   placeholder: (styles) => ({

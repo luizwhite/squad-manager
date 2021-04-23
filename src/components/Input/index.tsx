@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  MouseEventHandler,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import { IconBaseProps } from 'react-icons';
 import { useField } from '@unform/core';
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call */
 
@@ -10,6 +17,9 @@ interface InputProps
   label: string;
   'text-area'?: boolean;
   notFormField?: boolean;
+  icon?: React.ComponentType<IconBaseProps>;
+  handleSearch?: MouseEventHandler<HTMLButtonElement>;
+  $ref?: React.RefObject<HTMLInputElement>;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -18,6 +28,9 @@ export const Input: React.FC<InputProps> = ({
   label,
   'text-area': textArea = false,
   notFormField = false,
+  icon: Icon,
+  handleSearch,
+  $ref,
   ...rest
 }) => {
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
@@ -92,7 +105,11 @@ export const Input: React.FC<InputProps> = ({
             onBlur={handleInputBlur}
             defaultValue={defaultValue}
             id={fieldName}
-            ref={inputRef as React.RefObject<HTMLInputElement>}
+            ref={
+              !notFormField
+                ? (inputRef as React.RefObject<HTMLInputElement>)
+                : $ref
+            }
             {...rest}
           />
         ) : (
@@ -104,6 +121,11 @@ export const Input: React.FC<InputProps> = ({
             ref={inputRef as React.RefObject<HTMLTextAreaElement>}
             {...rest}
           />
+        )}
+        {Icon && handleSearch && !textArea && (
+          <button onClick={handleSearch} type="button">
+            <Icon size={20} />
+          </button>
         )}
       </InputContainer>
     </>

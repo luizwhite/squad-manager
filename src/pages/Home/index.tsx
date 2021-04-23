@@ -9,6 +9,13 @@ import { TeamsListTable } from '../../components/TeamsListTable';
 import Tooltip from '../../components/Tooltip';
 import { useTeams, Team } from '../../hooks/teams';
 
+import { getTopAverageAge } from '../../utils/getTopAverageAge';
+import { sortList } from '../../utils/sortList';
+
+import { getTeam } from '../../services/apiSports';
+
+import { allPlayers } from '../../allPlayers';
+
 import {
   Container,
   TopRanking,
@@ -19,42 +26,24 @@ import {
   PickedRank,
 } from './styles';
 
+interface TopList {
+  highest: {
+    id: number;
+    team: string;
+    avg: number;
+  }[];
+  lowest: {
+    id: number;
+    team: string;
+    avg: number;
+  }[];
+}
+
 const Home: React.FC = () => {
-  // const [teams, setTeams] = useState([
-  //   {
-  //     id: 1,
-  //     name: 'Barcelona',
-  //     description: 'Barcelona Squad',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Real Madrid',
-  //     description: 'Real Madrid Squad',
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Milan',
-  //     description: 'Milan Squad',
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Liverpool',
-  //     description: 'Liverpool Squad',
-  //   },
-  //   {
-  //     id: 5,
-  //     name: 'Bayern Munich',
-  //     description: 'Bayern Munich Squad',
-  //   },
-  //   {
-  //     id: 6,
-  //     name: 'Lazio',
-  //     description: 'Lazio Squad',
-  //   },
-  // ]);
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
   const [sortState, setSortState] = useState<string | null>(null);
+  const [topList, setTopList] = useState<TopList>({} as TopList);
   const { teams, deleteTeam } = useTeams();
   const history = useHistory();
 
@@ -73,35 +62,13 @@ const Home: React.FC = () => {
     [history],
   );
 
+  const handleCompleteTeam = useCallback(async (id: number) => {
+    console.log(await getTeam(id));
+  }, []);
+
   const handleSort = useCallback(
     (sortBy: string) => {
-      teams.sort(
-        (
-          { name: aName, description: aDesc },
-          { name: bName, description: bDesc },
-        ) => {
-          if (sortBy === 'by-name') {
-            if (sortState === 'by-name-asc') {
-              setSortState('by-name-desc');
-              return aName > bName ? -1 : aName < bName ? 1 : 0;
-            }
-            setSortState('by-name-asc');
-            return aName < bName ? -1 : aName > bName ? 1 : 0;
-          }
-
-          if (sortBy === 'by-description') {
-            if (sortState === 'by-description-asc') {
-              setSortState('by-description-desc');
-              return aDesc > bDesc ? -1 : aDesc < bDesc ? 1 : 0;
-            }
-            setSortState('by-description-asc');
-            return aDesc < bDesc ? -1 : aDesc > bDesc ? 1 : 0;
-          }
-
-          setSortState(null);
-          return 0;
-        },
-      );
+      sortList(teams, sortBy, sortState, setSortState);
 
       if (selectedTeam) setSelectedRow(teams.indexOf(selectedTeam) + 1);
     },
@@ -113,21 +80,7 @@ const Home: React.FC = () => {
   }, [selectedRow, teams]);
 
   useEffect(() => {
-    // const myHeaders = new Headers();
-    // myHeaders.append('x-rapidapi-key', '8f3d9ad1a73cb976c052e6390d2f0de2');
-    // myHeaders.append('x-rapidapi-host', 'v3.football.api-sports.io');
-    // const requestOptions = {
-    //   method: 'GET',
-    //   headers: myHeaders,
-    //   redirect: 'follow' as RequestRedirect,
-    // };
-    // fetch(
-    //   'https://v3.football.api-sports.io/players?league=39&season=2020',
-    //   requestOptions,
-    // )
-    //   .then((response) => response.text())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log('error', error));
+    setTopList(getTopAverageAge(allPlayers.players));
   }, []);
 
   return (
@@ -228,36 +181,49 @@ const Home: React.FC = () => {
             <div>
               <h1>Highest avg age</h1>
               <div>
-                <div>
-                  Inter Milan
-                  <span>31.9</span>
-                </div>
-                <div>
-                  APOEL Nicosia
-                  <span>31.7</span>
-                </div>
-                <div>
-                  IAC Milan
-                  <span>31.6</span>
-                </div>
-                <div>
-                  Besiktas JK
-                  <span>31.4</span>
-                </div>
-                <div>
-                  Olympiacos Piraeus
-                  <span>31.3</span>
-                </div>
+                {Object.keys(topList).length ? (
+                  topList.highest.map(({ team, avg }) => (
+                    <div key={team}>
+                      {team}
+                      <span>{avg}</span>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                  </>
+                )}
               </div>
             </div>
             <div>
               <h1>Lowest avg age</h1>
               <div>
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
+                {Object.keys(topList).length ? (
+                  topList.lowest.map(({ id: teamId, team, avg }, i) => (
+                    <div
+                      key={team}
+                      onClick={() => handleCompleteTeam(teamId)}
+                      role="button"
+                      onKeyDown={() => {}}
+                      tabIndex={i}
+                    >
+                      {team}
+                      <span>{avg}</span>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                    <div />
+                  </>
+                )}
               </div>
             </div>
           </TopRankingContent>

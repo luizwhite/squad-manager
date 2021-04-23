@@ -1,13 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { MdSearch } from 'react-icons/md';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
+
+import { getPlayers } from '../../services/apiSports';
 
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { Input } from '../../components/Input';
 import { Radio } from '../../components/Input/RadioInput';
 import { FootballField } from '../../components/FootballField';
+import { DraggablePlayer } from '../../components/DraggablePlayer';
+
+import { useTeams, Team } from '../../hooks/teams';
+import { TeamFormation, useTeamFormation } from '../../hooks/teamFormation';
 
 import {
   Container,
@@ -16,7 +23,6 @@ import {
   TeamConfiguration,
   SaveButton,
 } from './styles';
-import { useTeams, Team } from '../../hooks/teams';
 
 interface FormData {
   'team-name': string;
@@ -25,11 +31,42 @@ interface FormData {
   'team-type': 'Real' | 'Fantasy';
   // tags: string[];
   formation: string;
+  team: TeamFormation;
+}
+
+interface Data {
+  [key: string]: unknown;
+  response: Player[];
+  paging: {
+    current: number;
+    total: number;
+  };
+}
+
+interface Player {
+  player: {
+    id: number;
+    name: string;
+    firstname: string;
+    lastname: string;
+    age: number;
+    birth: {
+      country: string;
+    };
+    nationality: string;
+    height: string;
+    weight: string;
+  };
 }
 
 const TeamManagement: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [playersList, setPlayersList] = useState<Player[]>([]);
+  const [searchFilter, setSearchFilter] = useState<string>('');
+  const [invalidSearch, setInvalidSearch] = useState(false);
   const { addTeam, getTeam } = useTeams();
+  const { clearFormation, setupTeam } = useTeamFormation();
   const history = useHistory();
 
   const { id } = useParams<{ id?: string }>();
@@ -39,12 +76,34 @@ const TeamManagement: React.FC = () => {
     { id: 'fantasy', value: 'fantasy', label: 'Fantasy' },
   ];
 
+  const handleSearch = useCallback(() => {
+    if (
+      invalidSearch &&
+      searchRef.current &&
+      !searchRef.current.value.includes(searchFilter)
+    )
+      setInvalidSearch(false);
+    else if (invalidSearch) return;
+
+    if (searchRef.current && searchRef.current.value.length >= 4)
+      setSearchFilter(searchRef.current.value);
+  }, [invalidSearch, searchFilter]);
+
+  const handleSearchEnter = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSearch();
+      }
+    },
+    [handleSearch],
+  );
+
   const handleSubmit = useCallback(
     (data: FormData) => {
-      console.log(data);
       const { description, formation } = data;
 
-      const team: Omit<Team, 'id'> = {
+      const team: Omit<Team, 'id' | 'team'> = {
         name: data['team-name'],
         description,
         type: data['team-type'],
@@ -52,10 +111,17 @@ const TeamManagement: React.FC = () => {
         formation,
       };
 
-      addTeam(team);
+      const teamFormation = localStorage.getItem('@SquadTool:team');
+
+      addTeam({
+        ...team,
+        team: teamFormation ? JSON.parse(teamFormation) : {},
+      });
+
+      clearFormation();
       history.push('/');
     },
-    [addTeam, history],
+    [addTeam, clearFormation, history],
   );
 
   useEffect(() => {
@@ -72,8 +138,23 @@ const TeamManagement: React.FC = () => {
       };
 
       formRef.current.setData(formData);
+
+      localStorage.setItem('@SquadTool:team', JSON.stringify(team.team));
+      setupTeam(team.team);
     }
-  }, [formRef, getTeam, history, id]);
+  }, [formRef, getTeam, history, id, setupTeam]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { response: players } = (await getPlayers(searchFilter)) as Data;
+      if (!players.length) setInvalidSearch(true);
+      else setPlayersList(players);
+    };
+    if (searchFilter.length >= 4)
+      getData().catch((err) => {
+        console.error(`An error has occured: ${err as string}`);
+      });
+  }, [searchFilter]);
 
   return (
     <>
@@ -133,8 +214,19 @@ const TeamManagement: React.FC = () => {
                   label="Search players"
                   name="player-search"
                   placeholder="Ronaldo"
+                  icon={MdSearch}
+                  handleSearch={handleSearch}
+                  onKeyDown={handleSearchEnter}
+                  $ref={searchRef}
                   notFormField
                 />
+                {searchFilter && (
+                  <ul>
+                    {playersList.map(({ player }) => (
+                      <DraggablePlayer key={player.id} player={player} />
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           </TeamConfiguration>
