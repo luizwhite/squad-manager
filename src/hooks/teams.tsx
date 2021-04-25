@@ -15,7 +15,7 @@ interface TeamsContextData {
   teams: Team[];
   addTeam: (team: Omit<Team, 'id'>) => void;
   deleteTeam: (id: number) => void;
-  getTeam: (id: number) => Team | null;
+  getMyTeam: (id: number) => Team | null;
 }
 
 const TeamsContext = createContext({} as TeamsContextData);
@@ -44,13 +44,13 @@ const TeamsProvider: React.FC = ({ children }) => {
     [teams],
   );
 
-  const getTeam = useCallback(
+  const getMyTeam = useCallback(
     (teamId: number) => teams.find(({ id: tId }) => tId === teamId) || null,
     [teams],
   );
 
   return (
-    <TeamsContext.Provider value={{ teams, addTeam, getTeam, deleteTeam }}>
+    <TeamsContext.Provider value={{ teams, addTeam, getMyTeam, deleteTeam }}>
       {children}
     </TeamsContext.Provider>
   );

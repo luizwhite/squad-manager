@@ -86,7 +86,7 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   const [stateData] = useState<State['location']['state'] | null>(
     () => location.state || null,
   );
-  const { addTeam, getTeam } = useTeams();
+  const { addTeam, getMyTeam } = useTeams();
   const { clearFormation, setupTeam } = useTeamFormation();
   const history = useHistory();
 
@@ -146,7 +146,7 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   );
 
   useEffect(() => {
-    const team = getTeam(Number(id));
+    const team = getMyTeam(Number(id));
 
     if (!team && location.pathname !== '/manager') {
       history.push('/manager');
@@ -235,13 +235,29 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
       localStorage.setItem('@SquadTool:team', JSON.stringify(realTeam));
       setupTeam(realTeam);
     }
-  }, [formRef, getTeam, history, id, stateData, setupTeam, location.pathname]);
+  }, [
+    formRef,
+    getMyTeam,
+    history,
+    id,
+    stateData,
+    setupTeam,
+    location.pathname,
+  ]);
 
   useEffect(() => {
     const getData = async () => {
-      const { response: players } = (await getPlayers(searchFilter)) as Data;
-      if (!players.length) setInvalidSearch(true);
-      else setPlayersList(players);
+      const data = await (getPlayers(searchFilter) as Promise<Data>).catch(
+        (err) => {
+          console.error(`An error has occured: ${err as string}`);
+        },
+      );
+
+      if (data) {
+        const { response: players } = data;
+        if (!players.length) setInvalidSearch(true);
+        else setPlayersList(players);
+      }
     };
     if (searchFilter.length >= 4)
       getData().catch((err) => {

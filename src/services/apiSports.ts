@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return */
 interface Data {
   [key: string]: unknown;
   response: any[];
@@ -7,6 +7,23 @@ interface Data {
     total: number;
   };
 }
+
+const hasErrors = (data: any) => {
+  if (
+    data.errors &&
+    !Array.isArray(data.errors) &&
+    Object.keys(data.errors).length
+  ) {
+    console.error('error');
+
+    return { errors: data.errors.requests || data.errors.rateLimit || 'other' };
+  }
+  if (data.errors && Array.isArray(data.errors) && data.errors.length) {
+    return { errors: data.errors[0] };
+  }
+
+  return { errors: false };
+};
 
 export const getTeam = async (teamId: number, league = 71): Promise<any> => {
   const response = await fetch(
@@ -28,6 +45,8 @@ export const getTeam = async (teamId: number, league = 71): Promise<any> => {
 
   const team = await response.json();
 
+  if (hasErrors(team).errors) throw new Error(String(hasErrors(team).errors));
+
   const playersResponse = await fetch(
     `https://v3.football.api-sports.io/players?team=${teamId}&league=${league}&season=2019`,
     {
@@ -47,13 +66,15 @@ export const getTeam = async (teamId: number, league = 71): Promise<any> => {
 
   const teamPlayers = await playersResponse.json();
 
+  if (hasErrors(teamPlayers).errors)
+    throw new Error(String(hasErrors(teamPlayers).errors));
+
   return {
     team: team.response[0],
     teamPlayers: teamPlayers.response,
   };
 };
 
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 export const getPlayers = async (
   search: string,
   league = 71,
@@ -78,6 +99,9 @@ export const getPlayers = async (
   }
 
   const players: Data = await response.json();
+
+  if (hasErrors(players).errors)
+    throw new Error(String(hasErrors(players).errors));
 
   return players;
 };
@@ -106,6 +130,8 @@ export const getAllPlayers = async (
   }
 
   const data: Data = await response.json();
+
+  if (hasErrors(data).errors) throw new Error(String(hasErrors(data).errors));
 
   const { paging, response: players } = data;
   const playersAcc = playersAll.concat(players);
