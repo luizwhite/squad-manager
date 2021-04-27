@@ -3,7 +3,7 @@ import { useDrop } from 'react-dnd';
 
 import { useTeamFormation } from '../../hooks/teamFormation';
 
-import { Container, DummyImg } from './styles';
+import { Container, DummyImg, Details } from './styles';
 
 interface PlayerProps {
   $col: number;
@@ -14,13 +14,19 @@ interface PlayerProps {
   notDroppable?: boolean;
 }
 
+interface PlayerInfo {
+  id: number;
+  name: string;
+  firstname: string;
+  lastname: string;
+  nationality: string;
+  age: number;
+  height: string;
+  photo: string;
+}
+
 interface PlayerItem {
-  player: {
-    id: number;
-    name: string;
-    nationality: string;
-    age: number;
-  };
+  player: PlayerInfo;
 }
 
 export const Player: React.FC<PlayerProps> = ({
@@ -31,6 +37,7 @@ export const Player: React.FC<PlayerProps> = ({
   $twins,
   notDroppable,
 }) => {
+  const [player, setPlayer] = useState<PlayerInfo>({} as PlayerInfo);
   const [playerName, setPlayerName] = useState('+');
   const { savePosition, teamFormation } = useTeamFormation();
 
@@ -43,10 +50,12 @@ export const Player: React.FC<PlayerProps> = ({
   }, []);
 
   const handleDrop = useCallback(
-    (player: PlayerItem['player']) => {
-      const initials = getInitials(player.name);
+    (playerInfo: PlayerInfo) => {
+      setPlayer(playerInfo);
 
-      savePosition(area, $position, player);
+      const initials = getInitials(playerInfo.name);
+
+      savePosition(area, $position, playerInfo);
 
       setPlayerName(initials);
     },
@@ -55,7 +64,8 @@ export const Player: React.FC<PlayerProps> = ({
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'DraggablePlayer',
-    drop: (({ player }) => (!notDroppable ? handleDrop(player) : {})) as (
+    drop: (({ player: playerInfo }) =>
+      !notDroppable ? handleDrop(playerInfo) : {}) as (
       player: PlayerItem,
     ) => void,
     collect: (monitor) => ({
@@ -64,19 +74,44 @@ export const Player: React.FC<PlayerProps> = ({
   }));
 
   useEffect(() => {
-    if (!Object.keys(teamFormation).length) setPlayerName('+');
-    else if (
+    if (!Object.keys(teamFormation).length) {
+      setPlayerName('+');
+      setPlayer({} as PlayerInfo);
+    } else if (
       Object.keys(teamFormation).length >= 3 &&
       teamFormation[area][$position] &&
       !notDroppable
     )
-      setPlayerName(getInitials(teamFormation[area][$position].name));
+      setPlayer(teamFormation[area][$position]);
+    setPlayerName(getInitials(teamFormation[area][$position].name));
   }, [$position, area, getInitials, notDroppable, teamFormation]);
 
   return (
     <Container $col={$col} {...($twins && { $twins })} {...($row && { $row })}>
-      <DummyImg {...(!notDroppable && { ref: drop })} />
-      <span>{!isOver ? playerName : 'DROP'}</span>
+      <DummyImg
+        noHover={!!notDroppable || !Object.keys(player).length}
+        {...(!notDroppable && { ref: drop })}
+      />
+      <Details>
+        <div>
+          <img src={player.photo} alt="player-avatar" />
+          <div>
+            <span>{player.name}</span>
+            <div>
+              <span>
+                age:&nbsp;<span>{player.age}</span>
+              </span>
+              <span>
+                height:&nbsp;<span>{player.height}</span>
+              </span>
+              <span>
+                nationality:&nbsp;<span>{player.nationality}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </Details>
+      {!notDroppable && <span>{!isOver ? playerName : 'DROP'}</span>}
     </Container>
   );
 };

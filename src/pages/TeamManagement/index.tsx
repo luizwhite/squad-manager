@@ -50,6 +50,7 @@ interface Player {
     firstname: string;
     lastname: string;
     age: number;
+    photo: string;
     birth: {
       country: string;
     };
@@ -190,10 +191,8 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
             ...(i < 3
               ? {
                   [`${i + 1}`]: {
-                    id: player.id,
-                    name: player.firstname + player.lastname,
-                    nationality: player.nationality,
-                    age: player.age,
+                    ...player,
+                    name: `${player.firstname} ${player.lastname}`,
                   },
                 }
               : {}),
@@ -203,10 +202,8 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
             ...(i < 7 && i >= 3
               ? {
                   [`${i + 1 - 3}`]: {
-                    id: player.id,
-                    name: player.firstname + player.lastname,
-                    nationality: player.nationality,
-                    age: player.age,
+                    ...player,
+                    name: `${player.firstname} ${player.lastname}`,
                   },
                 }
               : {}),
@@ -216,10 +213,8 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
             ...(i < 10 && i >= 7
               ? {
                   [`${i + 1 - 7}`]: {
-                    id: player.id,
-                    name: player.firstname + player.lastname,
-                    nationality: player.nationality,
-                    age: player.age,
+                    ...player,
+                    name: `${player.firstname} ${player.lastname}`,
                   },
                 }
               : {}),

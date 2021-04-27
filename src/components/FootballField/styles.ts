@@ -68,26 +68,38 @@ export const Field = styled.div<FieldProps>`
       ? layout[0].formation > 4
         ? css`
             grid-template-rows: 0.11fr 0.39fr 0.195fr 0.195fr 0.11fr;
+
+            > div > div > img + span {
+              top: calc(-17.5% - 1rem) !important;
+            }
           `
         : layout[1].formation > 4
         ? css`
             grid-template-rows: 0.11fr 0.195fr 0.39fr 0.195fr 0.11fr;
+
+            > div > div > img + span {
+              top: calc(-17.5% - 1rem) !important;
+            }
           `
         : layout[2].formation > 4
         ? css`
             grid-template-rows: 0.11fr 0.195fr 0.195fr 0.39fr 0.11fr;
+
+            > div > div > img + span {
+              top: calc(-17.5% - 1rem) !important;
+            }
           `
         : css`
             grid-template-rows: 0.11fr 0.26fr 0.26fr 0.26fr 0.11fr;
 
-            > div img {
+            > div > div > img {
               height: 52.5%;
             }
           `
       : css`
           grid-template-rows: 0.11fr 0.26fr 0.26fr 0.26fr 0.11fr;
 
-          > div img {
+          > div > div > img {
             height: 52.5%;
           }
         `}

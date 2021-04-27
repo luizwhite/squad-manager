@@ -3,8 +3,12 @@ import { createContext, useCallback, useContext, useState } from 'react';
 interface Player {
   id: number;
   name: string;
+  firstname: string;
+  lastname: string;
   nationality: string;
   age: number;
+  height: string;
+  photo: string;
 }
 
 interface Position {
