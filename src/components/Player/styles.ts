@@ -85,7 +85,7 @@ export const Details = styled.span`
   padding: 0.5rem 1rem;
 
   background-color: var(--bg-tooltip);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   color: white;
   font-size: 0.875rem;
   font-weight: 500;
@@ -113,7 +113,7 @@ export const Details = styled.span`
     height: 100%;
 
     img {
-      height: 5rem;
+      height: calc(5rem * 0.9);
       border-radius: 50%;
       align-self: center;
     }

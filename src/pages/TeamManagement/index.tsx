@@ -82,13 +82,14 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   const formRef = useRef<FormHandles>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [playersList, setPlayersList] = useState<Player[]>([]);
+  const [filteredList, setFilteredList] = useState<Player[]>([]);
   const [searchFilter, setSearchFilter] = useState<string>('');
   const [invalidSearch, setInvalidSearch] = useState(false);
   const [stateData] = useState<State['location']['state'] | null>(
     () => location.state || null,
   );
   const { addTeam, getMyTeam } = useTeams();
-  const { clearFormation, setupTeam } = useTeamFormation();
+  const { clearFormation, setupTeam, players: myPlayers } = useTeamFormation();
   const history = useHistory();
 
   const { id } = useParams<{ id?: string }>();
@@ -260,6 +261,16 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
       });
   }, [searchFilter]);
 
+  useEffect(() => {
+    console.warn({ playersList, myPlayers, l: myPlayers.length });
+
+    setFilteredList(
+      playersList.filter(
+        ({ player }) => !myPlayers.find(({ id: pId }) => pId === player.id),
+      ),
+    );
+  }, [myPlayers, playersList]);
+
   return (
     <>
       <Header />
@@ -326,7 +337,7 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
                 />
                 {searchFilter && (
                   <ul>
-                    {playersList.map(({ player }) => (
+                    {filteredList.map(({ player }) => (
                       <DraggablePlayer
                         key={player.id}
                         player={player}

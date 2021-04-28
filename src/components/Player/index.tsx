@@ -56,7 +56,6 @@ export const Player: React.FC<PlayerProps> = ({
       const initials = getInitials(playerInfo.name);
 
       savePosition(area, $position, playerInfo);
-
       setPlayerName(initials);
     },
     [$position, area, getInitials, savePosition],
@@ -81,9 +80,10 @@ export const Player: React.FC<PlayerProps> = ({
       Object.keys(teamFormation).length >= 3 &&
       teamFormation[area][$position] &&
       !notDroppable
-    )
+    ) {
       setPlayer(teamFormation[area][$position]);
-    setPlayerName(getInitials(teamFormation[area][$position].name));
+      setPlayerName(getInitials(teamFormation[area][$position].name));
+    }
   }, [$position, area, getInitials, notDroppable, teamFormation]);
 
   return (
@@ -96,16 +96,16 @@ export const Player: React.FC<PlayerProps> = ({
         <div>
           <img src={player.photo} alt="player-avatar" />
           <div>
-            <span>{player.name}</span>
+            <span>{`${player.firstname} ${player.lastname}`}</span>
             <div>
               <span>
-                age:&nbsp;<span>{player.age}</span>
+                Age:&nbsp;&nbsp;<span>{player.age}</span>
               </span>
               <span>
-                height:&nbsp;<span>{player.height}</span>
+                Height:&nbsp;&nbsp;<span>{player.height}</span>
               </span>
               <span>
-                nationality:&nbsp;<span>{player.nationality}</span>
+                Nationality:&nbsp;&nbsp;<span>{player.nationality}</span>
               </span>
             </div>
           </div>
