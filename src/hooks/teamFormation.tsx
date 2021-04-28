@@ -51,7 +51,11 @@ const TeamFormationProvider: React.FC = ({ children }) => {
       return JSON.parse(formation) as TeamFormation;
     }
 
-    return {} as TeamFormation;
+    return {
+      offense: {},
+      middle: {},
+      defense: {},
+    };
   });
 
   const setupTeam = useCallback((team: TeamFormation) => {
@@ -73,9 +77,9 @@ const TeamFormationProvider: React.FC = ({ children }) => {
       if (myFormation) parsedFormation = JSON.parse(myFormation);
 
       const formation = {
-        ...(parsedFormation || teamFormation),
+        ...(myFormation ? parsedFormation : teamFormation),
         [area]: {
-          ...(parsedFormation || teamFormation)[area],
+          ...(myFormation ? parsedFormation : teamFormation)[area],
           [String(position)]: player,
         },
       };
@@ -96,7 +100,11 @@ const TeamFormationProvider: React.FC = ({ children }) => {
 
   const clearFormation = useCallback(() => {
     localStorage.removeItem('@SquadTool:team');
-    setTeamFormation({} as TeamFormation);
+    setTeamFormation({
+      offense: {},
+      middle: {},
+      defense: {},
+    });
   }, []);
 
   // useEffect(() => {

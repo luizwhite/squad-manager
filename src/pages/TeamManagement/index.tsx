@@ -81,6 +81,7 @@ interface State {
 const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   const formRef = useRef<FormHandles>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+  const [editMode, setEditMode] = useState(false);
   const [playersList, setPlayersList] = useState<Player[]>([]);
   const [filteredList, setFilteredList] = useState<Player[]>([]);
   const [searchFilter, setSearchFilter] = useState<string>('');
@@ -88,7 +89,7 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   const [stateData] = useState<State['location']['state'] | null>(
     () => location.state || null,
   );
-  const { addTeam, getMyTeam } = useTeams();
+  const { addTeam, editTeam, getMyTeam } = useTeams();
   const { clearFormation, setupTeam, players: myPlayers } = useTeamFormation();
   const history = useHistory();
 
@@ -136,15 +137,22 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
 
       const teamFormation = localStorage.getItem('@SquadTool:team');
 
-      addTeam({
-        ...team,
-        team: teamFormation ? JSON.parse(teamFormation) : {},
-      });
+      if (editMode && id) {
+        editTeam(Number(id), {
+          ...team,
+          team: teamFormation ? JSON.parse(teamFormation) : {},
+        });
+      } else {
+        addTeam({
+          ...team,
+          team: teamFormation ? JSON.parse(teamFormation) : {},
+        });
+      }
 
       clearFormation();
       history.push('/');
     },
-    [addTeam, clearFormation, history],
+    [addTeam, clearFormation, editMode, editTeam, history, id],
   );
 
   useEffect(() => {
@@ -157,6 +165,8 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
     if (!formRef.current) return;
 
     if (id && team) {
+      setEditMode(true);
+
       const formData = {
         'team-name': team.name,
         description: team.description,
@@ -262,8 +272,6 @@ const TeamManagement: React.FC<RouteProps & State> = ({ location }) => {
   }, [searchFilter]);
 
   useEffect(() => {
-    console.warn({ playersList, myPlayers, l: myPlayers.length });
-
     setFilteredList(
       playersList.filter(
         ({ player }) => !myPlayers.find(({ id: pId }) => pId === player.id),
